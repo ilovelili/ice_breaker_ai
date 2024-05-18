@@ -1,4 +1,3 @@
-from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain import hub
 from langchain.agents import (
     create_react_agent,
@@ -8,6 +7,8 @@ from langchain_core.tools import Tool
 from langchain.prompts.prompt import PromptTemplate
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
+
+from agents.helper import get_profile_url_tavily
 load_dotenv()
 
 
@@ -36,10 +37,3 @@ def lookup(name: str) -> str:
 
     linkedin_profile_url = result["output"]
     return linkedin_profile_url
-
-
-def get_profile_url_tavily(name: str):
-    """Searches for Linkedin or Twitter Profile Page."""
-    search = TavilySearchResults()
-    res = search.run(f"{name}")
-    return res[0]["url"]
