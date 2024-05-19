@@ -11,6 +11,7 @@ python-dotenv = "*"
 langchainhub = "*"
 tweepy = "*"
 flask = "*"
+langsmith = "*"
 
 [dev-packages]
 
