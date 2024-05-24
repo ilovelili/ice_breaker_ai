@@ -16,6 +16,8 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
         linkedin_profile_url = "https://gist.githubusercontent.com/emarco177/0d6a3f93dd06634d95e46a2782ed7490/raw/fad4d7a87e3e934ad52ba2a968bad9eb45128665/eden-marco.json"
         response = requests.get(linkedin_profile_url, timeout=10)
     else:
+        #  uses the Proxycurl API to fetch LinkedIn profile data
+        # https://nubela.co/proxycurl/docs#people-api-person-profile-endpoint
         api_endpoint = "https://nubela.co/proxycurl/api/v2/linkedin"
         response = requests.get(api_endpoint, params={"url": linkedin_profile_url}, headers={
             "Authorization": f'Bearer {os.environ.get("PROXYCURL_API_KEY")}'}, timeout=10)
